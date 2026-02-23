@@ -1,8 +1,8 @@
-import { Suspense } from "react"
+import { Suspense, type FC } from "react"
 import "./App.scss"
 import { AppRouter } from "./providers/router/ui/AppRouter"
 
-function App() {
+const App: FC = () => {
   return (
     <div className="app">
       <Suspense fallback="Loading...">

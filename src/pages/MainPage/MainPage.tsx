@@ -1,9 +1,10 @@
+import { memo, type FC } from "react"
 import { Heading } from "../../components/Heading/Heading"
 import FileLoader from "../../features/FileLoader/FileLoader"
 import { GetDatasetsList } from "../../features/GetDatasetsList/GetDatasetsList"
 
 
-export const MainPage = () => {
+export const MainPage: FC = memo(() => {
 
   return (
     <>
@@ -14,4 +15,4 @@ export const MainPage = () => {
       <GetDatasetsList />
     </>
   )
-}
+})
