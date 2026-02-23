@@ -1,0 +1,20 @@
+@import "../../app/styles/variables.scss";
+
+.app-link {
+  padding: 8px;
+  background-color: $primary;
+  color: $white;
+  border-radius: 8px;
+  height: 1.8rem;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-link:hover {
+  cursor: pointer;
+  background-color: $primary-hover;
+}

@@ -1,0 +1,133 @@
+@import "../../app/styles/variables.scss";
+
+.form-wrapper {
+  max-width: 600px;
+  background-color: $bg-main;
+  border: $border;
+  border-radius: 8px;
+
+  box-shadow: 0 0 30px rgba(#000, .1);
+  box-sizing: border-box;
+  margin: 50px auto 10px;
+  overflow: hidden;
+  padding: 30px;
+
+  @include mobile { margin: 30px auto 10px; }
+}
+
+.form {
+  margin-top: 12px;
+}
+
+label {
+  display: block;
+  margin: 0 0 5px;
+  color: #414040;
+  font-size: 16px;
+}
+
+input {
+  outline: none;
+  display: block;
+  background-color: $bg-grey;
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  color: #000000;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: $bg-grey-hover;
+  }
+}
+
+.drag-n-drop {
+  position: relative;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px dashed #99c1e9;
+  background-color: #e2e1e1;
+  text-align: center;
+  margin-top: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &.disabled {
+    cursor: default;
+  }
+
+  &:not(.disabled):hover, .drag-active { 
+    border-color: $primary;
+    background-color: $white;
+  }
+}
+
+.choised-file {
+  border-color: $success;
+}
+
+.hidden {
+  visibility: hidden;
+  height: 0;
+  padding: 0;
+}
+
+.form-controls {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 26px;
+  gap: 8px;
+}
+
+.btn {
+  padding: 8px;
+  border-radius: 8px;
+  height: 2rem;
+  outline: none;
+  border: none;
+  transition: all 0.2;
+  width: 140px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.submit-btn {  
+  background-color: $primary;
+  color: $white;
+
+  &:hover {
+    background-color: $primary-hover;
+  }
+}
+
+.reset-btn {
+  color: $red;
+  border: 1px solid $red;
+  background-color: transparent;
+  transition: all 0.2;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.863);
+    border-color: $red-hover;
+    background-color: $red-hover;
+  }
+}
+
+.paragraph-caption {
+  text-align: center;
+  font-weight: 500;
+  margin: 24px 0 6px;
+
+  &.success {
+    color: $success;
+  }
+
+  &.error {
+    color: $red;
+  }
+}

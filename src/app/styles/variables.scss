@@ -1,0 +1,21 @@
+$primary: #4079e4;
+$primary-hover: #3b6cc7;
+$bg-main: #f3f1f1;
+$bg-secondary: #f3f3f3;
+$bg-list: #e6e6e6;
+$bg-grey: #ccc;
+$bg-grey-hover: #bebebe;
+$border: 1px solid $primary;
+$white: #ffffff;
+$success: #5adb85;
+$red: rgba(228, 43, 43, 0.863);
+$red-hover: rgba(228, 43, 43, 0.863);
+
+
+@mixin mobile {@media (min-width: 320px) and (max-width: 719px) {
+  @content;
+}}
+
+@mixin tablet {@media (min-width: 720px) and (max-width: 1023px) {
+  @content;
+}}

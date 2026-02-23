@@ -1,0 +1,32 @@
+@import "../../app/styles/variables.scss";
+
+.stats-card {
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  border: $border;
+  border-radius: 8px;
+}
+
+.stats-caption {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  background-color: $primary;
+  color: $white;
+  border-radius: 6px 6px 0 0;
+}
+
+.stats-list{
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  padding: 6px;
+  margin: auto 0;
+}
+
+.stats-list-item {
+  display: flex;
+  justify-content: space-evenly;
+}
