@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState, type FC } from "react"
+import React, { useCallback, useEffect, useRef, useState, type FC } from "react"
 import { useUploadDataSetMutation } from "../../api/datasetsApi"
 import { RoutePath } from "../../app/providers/router/config/routerConfig"
 import { useNavigate } from "react-router-dom"
@@ -12,8 +12,22 @@ const FileLoader: FC = () => {
   const [file, setFile] = useState<File | null>(null)
   const [dragActive, setDragActive] = useState(false)
   const inputFileRef = useRef<HTMLInputElement>(null)
-  const [upload, {error, isSuccess, isLoading}] = useUploadDataSetMutation()
+  const [upload, {data, error, isSuccess, isLoading}] = useUploadDataSetMutation()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>
+
+    if (isSuccess && data?.id) {
+      timer = setTimeout(() => {
+        navigate(`${RoutePath.chart}${data.id}`)
+      }, 2500)
+    }
+
+    return () => {
+      if (timer) clearTimeout(timer)
+    }
+  }, [isSuccess, data?.id, navigate])
 
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault()
@@ -45,13 +59,12 @@ const FileLoader: FC = () => {
     e.preventDefault()
     if(!file || !name) return
 
-    try {
-      const formData = new FormData()
-      formData.append("file", file)
-      formData.append("dataset_name", name)
+    const formData = new FormData()
+    formData.append("file", file)
+    formData.append("dataset_name", name)
 
-      const response = await upload(formData).unwrap()
-      setTimeout(() => navigate(`${RoutePath.chart}${response.id}`), 2500)
+    try {
+      await upload(formData).unwrap()
     } catch (err) {
       console.error("Ошибка загрузки", err)
     }
